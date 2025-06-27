@@ -56,7 +56,7 @@ const Hero = () => {
       {/* ✅ Preload logo */}
       <div className="hidden">
         <Image
-          src="/imaaage.png" // 🔁 Make sure this is the correct logo path
+          src="/imaaage.png"
           alt="Amyg Systems Logo"
           width={180}
           height={60}
