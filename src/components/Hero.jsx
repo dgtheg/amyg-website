@@ -4,22 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const Hero = () => {
-  const fullText = "Engineering the Future";
-  const [typedText, setTypedText] = useState("");
-  const [index, setIndex] = useState(0);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
   const [hasLoaded, setHasLoaded] = useState(false);
   const heroRef = useRef(null);
-
-  useEffect(() => {
-    if (index < fullText.length) {
-      const timeout = setTimeout(() => {
-        setTypedText((prev) => prev + fullText[index]);
-        setIndex(index + 1);
-      }, 80);
-      return () => clearTimeout(timeout);
-    }
-  }, [index, fullText]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -41,25 +28,6 @@ const Hero = () => {
     };
   }, []);
 
-  const words = typedText.split(" ");
-  const titleWithColor = (
-    <>
-      {words.map((word, i) =>
-        word === "Future" ? (
-          <span key={i} className="text-blue-500">
-            {word}
-          </span>
-        ) : (
-          <span key={i}>
-            {word}
-            {i < words.length - 1 ? " " : ""}
-          </span>
-        )
-      )}
-      <span className="animate-pulse">|</span>
-    </>
-  );
-
   return (
     <section
       ref={heroRef}
@@ -73,9 +41,16 @@ const Hero = () => {
       }}
       aria-label="Hero Section"
     >
-      {/* Preload background image */}
+      {/* Preload background image with fixed size */}
       <div className="hidden">
-        <Image src="/amygback.png" alt="" width={1} height={1} priority />
+        <Image
+          src="/amygback.png"
+          alt=""
+          width={1920}
+          height={1080}
+          priority
+          loading="eager"
+        />
       </div>
 
       {/* Dark overlay */}
@@ -84,7 +59,7 @@ const Hero = () => {
       {/* Main content */}
       <div className="relative z-10 p-6 rounded-xl flex flex-col items-center transition-opacity duration-1000">
         <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4">
-          {titleWithColor}
+          Engineering the <span className="text-blue-500">Future</span>
         </h1>
         <p className="text-lg text-gray-300 max-w-2xl">
           Amyg Systems delivers cutting-edge industrial and electrical solutions
