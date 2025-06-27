@@ -25,24 +25,25 @@ export const metadata = {
     "Construction Technology",
   ],
   authors: [{ name: "Amyg Systems" }],
+  robots: "index, follow",
   openGraph: {
     title: "Amyg Systems | Engineering the Future",
     description:
       "Explore Amyg Systems – delivering precision, performance, and reliability across engineering projects in Greece and beyond.",
-    url: "https://yourdomain.com", // ✅ Change to your actual domain
+    url: "https://amyg-website.vercel.app",
     siteName: "Amyg Systems",
     images: [
       {
-        url: "https://yourdomain.com/og-image.jpg", // ✅ Replace with your OG image
+        url: "https://amyg-website.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Amyg Systems logo",
+        alt: "Amyg Systems OpenGraph Image",
       },
     ],
     locale: "en_US",
     type: "website",
   },
-  metadataBase: new URL("https://yourdomain.com"), // ✅ Same domain here
+  metadataBase: new URL("https://amyg-website.vercel.app"),
 };
 
 export default function RootLayout({ children }) {

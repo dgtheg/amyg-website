@@ -41,7 +41,6 @@ const Hero = () => {
     };
   }, []);
 
-  // Split title
   const words = typedText.split(" ");
   const titleWithColor = (
     <>
@@ -64,26 +63,32 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className={`relative h-screen w-full flex flex-col justify-center items-center bg-cover bg-center bg-no-repeat text-center px-4 overflow-hidden transition-all duration-1000 ease-out ${
+      className={`relative h-screen w-full flex flex-col justify-center items-center bg-cover bg-center bg-no-repeat text-center px-4 overflow-hidden transition-all duration-700 ease-out ${
         hasLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
       }`}
       style={{
-        backgroundImage: 'url("/amygback.png")',
+        backgroundImage: 'url("/amygback.webp")', // ✅ Use compressed WebP version
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
       }}
       aria-label="Hero Section"
     >
-      {/* Preload background image */}
+      {/* Preload background image (invisible for performance) */}
       <div className="hidden">
-        <Image src="/amygback.png" alt="" width={1} height={1} priority />
+        <Image
+          src="/amygback.webp" // ✅ Match the version used above
+          alt=""
+          width={1}
+          height={1}
+          priority
+        />
       </div>
 
-      {/* Dark overlay */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black/60 z-0" />
 
-      {/* Main content */}
-      <div className="relative z-10 p-6 rounded-xl flex flex-col items-center transition-opacity duration-1000">
+      {/* Content */}
+      <div className="relative z-10 p-6 rounded-xl flex flex-col items-center transition-opacity duration-700">
         <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4">
           {titleWithColor}
         </h1>
@@ -94,7 +99,7 @@ const Hero = () => {
         </p>
       </div>
 
-      {/* Discover Us button */}
+      {/* Discover Us */}
       <div
         className={`absolute bottom-28 flex flex-col items-center transition-opacity duration-500 ${
           isHeroVisible ? "opacity-100" : "opacity-0 pointer-events-none"
