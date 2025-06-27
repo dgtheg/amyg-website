@@ -41,13 +41,25 @@ const Hero = () => {
       }}
       aria-label="Hero Section"
     >
-      {/* Preload background image with fixed size */}
+      {/* ✅ Preload background image */}
       <div className="hidden">
         <Image
           src="/amygback.png"
           alt=""
           width={1920}
           height={1080}
+          priority
+          loading="eager"
+        />
+      </div>
+
+      {/* ✅ Preload logo */}
+      <div className="hidden">
+        <Image
+          src="/imaaage.png" // 🔁 Make sure this is the correct logo path
+          alt="Amyg Systems Logo"
+          width={180}
+          height={60}
           priority
           loading="eager"
         />
