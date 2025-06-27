@@ -31,16 +31,18 @@ const Header = () => {
   return (
     <header
       role="banner"
-      className={`backdrop-blur-md bg-white/10 text-white sticky top-0 z-50 transition-transform duration-300 ${
+      className={`sticky top-0 z-50 transition-transform duration-300 ${
         visible ? "translate-y-0" : "-translate-y-full"
-      }`}
+      } backdrop-blur-md bg-black/30`}
       style={{
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
         fontSize: "1.2rem",
+        WebkitBackdropFilter: "blur(16px)",
+        backdropFilter: "blur(16px)",
       }}
     >
-      <div className="relative flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 py-4">
+      <div className="relative flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 py-4 text-white">
         {/* Mobile Menu Toggle */}
         <div className="lg:hidden">
           <button
