@@ -1,4 +1,4 @@
-// src/app/sitemap.xml/route.ts
+// src/app/sitemap.xml/route.js
 
 export async function GET() {
   const baseUrl = 'https://amyg-website.vercel.app';
@@ -19,7 +19,7 @@ export async function GET() {
 
   return new Response(sitemap, {
     headers: {
-      'Content-Type': 'application/xml', // 👈 This is key
+      'Content-Type': 'application/xml',
     },
   });
 }
