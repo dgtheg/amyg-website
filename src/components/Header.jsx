@@ -7,6 +7,7 @@ const Header = () => {
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [lang, setLang] = useState("en");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,10 +24,14 @@ const Header = () => {
     setLang((prev) => (prev === "en" ? "gr" : "en"));
   };
 
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
   return (
     <header
       role="banner"
-      className={`bg-black sticky top-0 z-50 transition-transform duration-300 ${
+      className={`backdrop-blur-md bg-white/10 text-white sticky top-0 z-50 transition-transform duration-300 ${
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
       style={{
@@ -35,10 +40,43 @@ const Header = () => {
         fontSize: "1.2rem",
       }}
     >
-      <div className="relative flex items-center justify-between max-w-7xl mx-auto px-6 py-6">
-        {/* Left Menu */}
+      <div className="relative flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 py-4">
+        {/* Mobile Menu Toggle */}
+        <div className="lg:hidden">
+          <button
+            onClick={toggleMenu}
+            className="text-white focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {menuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Desktop Navigation */}
         <nav
-          className="flex space-x-12 text-gray-300"
+          className="hidden lg:flex space-x-12 text-gray-300"
           aria-label="Main Navigation"
         >
           <a href="/#projects" className="hover:text-blue-500 transition">
@@ -55,7 +93,7 @@ const Header = () => {
           </a>
         </nav>
 
-        {/* Centered logo */}
+        {/* Centered Logo */}
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <a href="/" className="block" aria-label="Homepage">
             <Image
@@ -64,15 +102,16 @@ const Header = () => {
               width={180}
               height={60}
               className="cursor-pointer"
+              priority
             />
           </a>
         </div>
 
         {/* Right: Language Toggle */}
-        <div className="w-[150px] flex justify-end">
+        <div className="flex items-center gap-4">
           <button
             onClick={toggleLang}
-            className="text-gray-300 hover:text-blue-500 transition flex items-center gap-2"
+            className="text-gray-300 hover:text-blue-500 transition hidden sm:flex items-center gap-2"
             aria-label="Toggle Language"
           >
             {lang === "en" ? (
@@ -89,6 +128,40 @@ const Header = () => {
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {menuOpen && (
+        <div className="lg:hidden bg-black/80 text-white px-6 pb-4 space-y-2">
+          <a href="/#projects" className="block hover:text-blue-500 transition">
+            Projects
+          </a>
+          <a href="/#brands" className="block hover:text-blue-500 transition">
+            Brands
+          </a>
+          <a href="/#about" className="block hover:text-blue-500 transition">
+            About
+          </a>
+          <a href="/#contact" className="block hover:text-blue-500 transition">
+            Contact
+          </a>
+          <button
+            onClick={toggleLang}
+            className="mt-2 text-gray-300 hover:text-blue-500 transition flex items-center gap-2"
+          >
+            {lang === "en" ? (
+              <>
+                <span>🇬🇧</span>
+                <span>ENG</span>
+              </>
+            ) : (
+              <>
+                <span>🇬🇷</span>
+                <span>ΕΛ</span>
+              </>
+            )}
+          </button>
+        </div>
+      )}
     </header>
   );
 };

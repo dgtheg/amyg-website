@@ -18,11 +18,15 @@ export const metadata = {
   keywords: [
     "Amyg",
     "Amyg Systems",
+    "Amyralis",
+    "Amyralis tecnik",
+    "amyg greece",
+    "αμυραλισ",
     "Engineering",
     "Industrial Projects",
     "Greek Engineering",
     "Systems Integration",
-    "Construction Technology",
+    "Construction Technology"
   ],
   authors: [{ name: "Amyg Systems" }],
   robots: "index, follow",
