@@ -5,8 +5,12 @@ import { useEffect, useRef, useState } from "react";
 const About = () => {
   const sectionRef = useRef(null);
   const [startAnimation, setStartAnimation] = useState(false);
-  const [visibleWords, setVisibleWords] = useState(0);
-  const titleWords = ["Precision.", "Performance.", "Reliability."];
+  const [fadeInTitle, setFadeInTitle] = useState(false);
+  const titleWords = [
+    "Precision.",
+    "Performance.",
+    <span key="reliability" className="text-blue-500">Reliability.</span>,
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,15 +27,12 @@ const About = () => {
   }, []);
 
   useEffect(() => {
-    if (!startAnimation) return;
-
-    const interval = setInterval(() => {
-      setVisibleWords((prev) =>
-        prev < titleWords.length ? prev + 1 : prev
-      );
-    }, 500);
-
-    return () => clearInterval(interval);
+    if (startAnimation) {
+      const timeout = setTimeout(() => {
+        setFadeInTitle(true);
+      }, 300);
+      return () => clearTimeout(timeout);
+    }
   }, [startAnimation]);
 
   const stylizeAMYG = (text) =>
@@ -68,10 +69,13 @@ const About = () => {
       <div className="max-w-6xl mx-auto relative z-10 bg-black/60 backdrop-blur-sm p-8 rounded-xl">
         {/* Animated Title */}
         <h2
-          className="text-4xl md:text-5xl font-bold text-center mb-10 transition-opacity duration-700 ease-in-out opacity-0 animate-fade-in"
-          aria-label="Precision, Performance, Reliability"
+          className={`text-4xl md:text-5xl font-bold text-center mb-10 transition-opacity duration-1000 ease-in-out ${
+            fadeInTitle ? "opacity-100" : "opacity-0"
+          }`}
         >
-          {titleWords.slice(0, visibleWords).join(" ")}
+          {titleWords.map((word, i) => (
+            <span key={i} className="mr-2">{word}</span>
+          ))}
         </h2>
 
         <div className="flex flex-col md:flex-row gap-12">
@@ -122,22 +126,10 @@ const About = () => {
         </p>
       </div>
 
-      {/* Custom fade-in keyframes */}
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 1.2s ease-in-out forwards;
-        }
-      `}</style>
+      {/* 🔍 Hidden SEO Keywords */}
+      <div className="sr-only">
+        amyralis giannis, amyralis technik, amyralis technick, amyg
+      </div>
     </section>
   );
 };

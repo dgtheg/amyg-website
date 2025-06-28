@@ -1,17 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Header from "../components/Header";
 
 const AllProjects = () => {
+  const router = useRouter();
+
   const allProjects = [
     {
-      title: "Fully Automatic Production line for aluminun frames",
+      title: "Fully Automatic Production line for aluminum frames",
       desc: "",
       image: "/project1n.jpg",
     },
     {
-      title: "Combi machine for wire & strip straingthening, double bending & cutting",
+      title: "Combi machine for wire & strip straightening, double bending & cutting",
       desc: "",
       image: "/project2n.jpg",
     },
@@ -31,7 +34,7 @@ const AllProjects = () => {
       image: "/project5.jpg",
     },
     {
-      title: "Vertical lathe fo gear-boxes seals/rings NBR",
+      title: "Vertical lathe for gear-boxes seals/rings NBR",
       desc: "",
       image: "/project6.jpg",
     },
@@ -44,10 +47,8 @@ const AllProjects = () => {
   );
 
   const scrollToProjects = () => {
-    const section = document.getElementById("projects");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+    // Navigate back to homepage and scroll to #projects
+    router.push("/#projects");
   };
 
   return (
@@ -68,10 +69,7 @@ const AllProjects = () => {
       {/* Content */}
       <div className="relative z-10">
         <Header />
-        <section
-          aria-label="All Projects Section"
-          className="py-20 px-6"
-        >
+        <section aria-label="All Projects Section" className="py-20 px-6">
           <div className="max-w-7xl mx-auto">
             {/* Back Arrow */}
             <div className="mb-8">

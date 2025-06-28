@@ -65,6 +65,11 @@ const Hero = () => {
         />
       </div>
 
+      {/* 🔍 Hidden SEO keywords */}
+      <div className="sr-only">
+        Amyralis Giannis, Amyralis Technik, Amyralis Technick, Amyg
+      </div>
+
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/60 z-0" />
 

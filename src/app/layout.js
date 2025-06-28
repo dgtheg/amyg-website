@@ -20,11 +20,11 @@ export const metadata = {
     "Amyg Systems",
     "Amyralis",
     "Amyralis tecnik",
+    "Amyralis technik",
+    "amyralis technick",
+    "amyralis giannis",
     "amyg greece",
     "αμυραλισ",
-    "amyralis giannnis",
-    "amyralis technik",
-    "machine production greece",
     "αμυγγ",
     "amyg technologies",
     "Engineering",
@@ -59,10 +59,34 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* ✅ Favicon in .ico format for full browser support */}
+        {/* ✅ SEO meta tags */}
+        <meta
+          name="keywords"
+          content="Amyg, Amyg Systems, Amyralis, Amyralis tecnik, Amyralis technik, amyralis technick, amyralis giannis, amyg greece, αμυραλισ, αμυγγ, amyg technologies, Engineering, Industrial Projects, Greek Engineering, Systems Integration, Construction Technology"
+        />
+        <meta name="robots" content="index, follow" />
+
+        {/* ✅ Favicon */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.png" />
+
+        {/* ✅ Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Amyg Systems",
+              url: "https://amyg-website.vercel.app",
+              logo: "https://amyg-website.vercel.app/og-image.jpg",
+              sameAs: ["https://www.youtube.com/@RingoBella"],
+              description:
+                "Amyg Systems delivers cutting-edge engineering, precision machines, and custom industrial solutions across Europe.",
+            }),
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

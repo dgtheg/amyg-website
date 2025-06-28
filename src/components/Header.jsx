@@ -42,7 +42,7 @@ const Header = () => {
         backdropFilter: "blur(16px)",
       }}
     >
-      <div className="relative flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 py-4 text-white">
+      <div className="relative flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 py-6 text-white">
         {/* Mobile Menu Toggle */}
         <div className="lg:hidden">
           <button
@@ -81,16 +81,16 @@ const Header = () => {
           className="hidden lg:flex space-x-12 text-gray-300"
           aria-label="Main Navigation"
         >
-          <a href="/#projects" className="hover:text-blue-500 transition">
+          <a href="#projects" className="hover:text-blue-500 transition">
             Projects
           </a>
-          <a href="/#brands" className="hover:text-blue-500 transition">
-            Brands
+          <a href="#gallery" className="hover:text-blue-500 transition">
+            Gallery
           </a>
-          <a href="/#about" className="hover:text-blue-500 transition">
+          <a href="#about" className="hover:text-blue-500 transition">
             About
           </a>
-          <a href="/#contact" className="hover:text-blue-500 transition">
+          <a href="#contact" className="hover:text-blue-500 transition">
             Contact
           </a>
         </nav>
@@ -134,16 +134,16 @@ const Header = () => {
       {/* Mobile Menu Dropdown */}
       {menuOpen && (
         <div className="lg:hidden bg-black/80 text-white px-6 pb-4 space-y-2">
-          <a href="/#projects" className="block hover:text-blue-500 transition">
+          <a href="#projects" className="block hover:text-blue-500 transition">
             Projects
           </a>
-          <a href="/#brands" className="block hover:text-blue-500 transition">
-            Brands
+          <a href="#gallery" className="block hover:text-blue-500 transition">
+            Gallery
           </a>
-          <a href="/#about" className="block hover:text-blue-500 transition">
+          <a href="#about" className="block hover:text-blue-500 transition">
             About
           </a>
-          <a href="/#contact" className="block hover:text-blue-500 transition">
+          <a href="#contact" className="block hover:text-blue-500 transition">
             Contact
           </a>
           <button

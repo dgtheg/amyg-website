@@ -15,12 +15,15 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Message submitted!");
+    window.confirm(
+      "✅ Thank you for reaching out!\n\nWe've received your message and usually respond within 24 hours.\n\nWe appreciate your interest in Amyg Systems!"
+    );
     setFormData({ name: "", email: "", message: "" });
   };
 
   return (
     <section
+      id="contact"
       className="py-16 px-4 bg-black text-white text-center"
       aria-label="Contact Section"
     >

@@ -51,7 +51,7 @@ const Engineering = () => {
 
   return (
     <section
-      id="engineering"
+      id="gallery"
       aria-label="Engineering Section"
       ref={sectionRef}
       className="py-16 px-4 text-center bg-black border-t border-neutral-700"

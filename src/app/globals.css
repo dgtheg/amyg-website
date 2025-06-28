@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* ✅ Enable smooth scroll globally */
+html {
+  scroll-behavior: smooth;
+}
+
 /* 🌙 Light / Dark mode root vars */
 :root {
   --background: #ffffff;
